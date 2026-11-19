@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ASCAM</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <video id="webcam" autoplay playsinline muted></video>
+    <header class="site-header">
+        <img src="favicon.svg" alt="">
+        <h1>ASCAM</h1>
+        <button id="help-btn" class="help-button" type="button" aria-label="About ASCAM" aria-haspopup="dialog"
+            aria-controls="help-dialog">?</button>
+    </header>
+    <main>
+        <div class="controls">
+            <button id="stop-btn">Stop Camera</button>
+            <button id="start-btn">Start Camera</button>
+            <button id="color-btn">Toggle Color</button>
+        </div>
+        <pre id="ascii-output"></pre>
+    </main>
+    <dialog id="help-dialog" aria-labelledby="help-title">
+        <div class="dialog-header">
+            <h2 id="help-title">About ASCAM</h2>
+            <button id="close-help-btn" type="button" aria-label="Close help">×</button>
+        </div>
+        <p>ASCAM turns your camera feed into live ASCII art. Use the buttons to stop or restart the camera and switch
+            between monochrome and color output.</p>
+        <h3>Ideas for the future</h3>
+        <ul>
+            <li>Adjustable character detail and output size</li>
+            <li>More character sets and color styles</li>
+            <li>Save or copy an ASCII snapshot</li>
+        </ul>
+    </dialog>
+    <script src="script.js"></script>
+</body>
+
+</html>
