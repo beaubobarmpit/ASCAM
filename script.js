@@ -3,13 +3,26 @@ const stopButton = document.getElementById('stop-btn');
 const startButton = document.getElementById('start-btn');
 const density = "$@B%8WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~;:,. ";
 const asciiElement = document.getElementById('ascii-output'); // Element to display ASCII art
+const qualitySelect = document.getElementById('quality-select');
 // 1. Create the canvas in JS and save its 2D context
 const canvas = document.createElement('canvas');
 const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-// Keep a wide character grid to preserve the video proportions in text.
-canvas.width = 160;
-canvas.height = 72;
+const qualitySettings = {
+    high: { width: 160, height: 72 },
+    medium: { width: 120, height: 54 },
+    low: { width: 80, height: 36 }
+};
+
+function updateQuality() {
+    const { width, height } = qualitySettings[qualitySelect.value];
+    canvas.width = width;
+    canvas.height = height;
+    asciiElement.dataset.quality = qualitySelect.value;
+}
+
+updateQuality();
+qualitySelect.addEventListener('change', updateQuality);
 
 let activeStream = null;
 let animationId = null; // Stores the loop ID so we can stop it later
